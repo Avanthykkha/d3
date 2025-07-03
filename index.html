@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechFusion 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffe4ec, #e0f7fa);
+      color: #333;
+      text-align: center;
+      padding: 80px 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #d63384;
+      margin-bottom: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 10px;
+      animation: bounce 1.5s infinite;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+      animation: fadeIn 1.4s ease-in-out;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+      animation: fadeIn 1.8s ease-in-out;
+    }
+
+    .btn-group a {
+      display: inline-block;
+      text-decoration: none;
+      background: #d63384;
+      color: white;
+      padding: 12px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .btn-group a:hover {
+      background: #ad1457;
+      transform: scale(1.05);
+    }
+
+    .speaker-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 55px;
+      height: 55px;
+      background: #d63384;
+      color: white;
+      font-size: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: floatBtn 3s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    .speaker-toggle:hover {
+      background: #b1236d;
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    /* Speaker Panel */
+    .speaker-panel {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+      width: 260px;
+      animation: fadeInUp 0.5s ease-in-out;
+    }
+
+    .speaker-panel.show {
+      display: flex;
+    }
+
+    .speaker-panel h3 {
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    .speaker-panel div {
+      background: #f8f8f8;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .speaker-panel div strong {
+      color: #333;
+    }
+
+    /* Floating Bubbles */
+    .bubble {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: bubbleUp 15s infinite ease-in;
+      bottom: -50px;
+      z-index: 0;
+    }
+
+    .bubble:nth-child(1) { left: 10%; animation-delay: 0s; width: 15px; height: 15px; }
+    .bubble:nth-child(2) { left: 30%; animation-delay: 3s; }
+    .bubble:nth-child(3) { left: 60%; animation-delay: 5s; width: 25px; height: 25px; }
+    .bubble:nth-child(4) { left: 80%; animation-delay: 1s; }
+
+    @keyframes bubbleUp {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-800px); opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatBtn {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .btn-group a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
+
+      .speaker-panel {
+        right: 20px;
+        bottom: 90px;
+        width: 90%;
+      }
+
+      .speaker-toggle {
+        right: 20px;
+        bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating bubbles -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <span class="emoji">🎉</span>
+  <h1>TechFusion 2025</h1>
+  <p>🚀 Join us for a 3-day experience of code, innovation, tech talks, and coffee-fueled brilliance ☕💡.</p>
+
+  <div class="btn-group">
+    <a href="schedule.html">📅 View Schedule</a>
+    <a href="register.html">📝 Register Now</a>
+  </div>
+
+  <!-- Toggle Speaker Panel -->
+  <div class="speaker-panel" id="speakerPanel">
+    <h3>🎤 Speakers</h3>
+    <div><strong>Jungkook Jeon</strong><br>AI Specialist @ OpenTech 🤖</div>
+    <div><strong>Mingyu Kim</strong><br>Developer Advocate @ CodeLabs 💻</div>
+    <div><strong>Jeonghan Yoon</strong><br>Cybersecurity Analyst @ SafeNet 🔐</div>
+  </div>
+
+  <div class="speaker-toggle" id="speakerToggle" title="Meet the Speakers">
+    <i class="fas fa-microphone"></i>
+  </div>
+
+  <audio id="chime" src="https://cdn.pixabay.com/audio/2022/03/15/audio_13a9d24e4a.mp3" preload="auto"></audio>
+
+  <script>
+    const toggle = document.getElementById('speakerToggle');
+    const panel = document.getElementById('speakerPanel');
+    const chime = document.getElementById('chime');
+
+    toggle.addEventListener('click', () => {
+      panel.classList.toggle('show');
+      chime.play();
+    });
+  </script>
+</body>
+</html>

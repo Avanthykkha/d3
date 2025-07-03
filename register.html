@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bg-bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bg-bubbles span {
+      position: absolute;
+      display: block;
+      width: 25px;
+      height: 25px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: floatUp 10s infinite ease-in-out;
+      bottom: -150px;
+    }
+
+    .bg-bubbles span:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .bg-bubbles span:nth-child(2) { left: 20%; animation-delay: 2s; }
+    .bg-bubbles span:nth-child(3) { left: 70%; animation-delay: 4s; }
+    .bg-bubbles span:nth-child(4) { left: 40%; animation-delay: 1s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+
+    .form-container {
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #e91e63;
+      box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+    }
+
+    button {
+      background: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 25px;
+      width: 100%;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="form-container">
+  <h2>📝 Event Registration</h2>
+  <form id="regForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required/>
+
+    <label for="college">College:</label>
+    <input type="text" id="college" name="college" required/>
+
+    <button type="submit">Register</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('regForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const college = document.getElementById('college').value.trim();
+
+    if (!name || !email || !college) {
+      alert('All fields are required!');
+      return;
+    }
+
+    alert(`You're officially registered, ${name}! 🌟`);
+    
+    // Wait 300ms then redirect
+    setTimeout(() => {
+      window.location.href = "confirm.html";
+    }, 300);
+  });
+</script>
+
+</body>
+</html>
